@@ -5,10 +5,14 @@ namespace netboilerplate
 	{
 		public AutoMapperProfile()
 		{
-			CreateMap<Character, GetCharacterDto>();
-			CreateMap<AddCharacterDto, Character>();
-            CreateMap<UpdateCharacterDto, Character>();
+			CreateMap<Character, GetCharacterDto>()
+                .ForMember(dest =>
+            dest.Backpack, opt => opt.MapFrom(src => new AddBackpackDto { Description = src.Backpack.Description }));
+            CreateMap<AddCharacterDto, Character>().ForMember(dest =>
+			dest.Backpack, opt=>opt.MapFrom(src=> new AddBackpackDto { Description = src.Backpack.Description}));
+			CreateMap<UpdateCharacterDto, Character>();
 
+            CreateMap<AddBackpackDto, Backpack>();
         }
     }
 }
