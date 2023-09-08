@@ -8,8 +8,7 @@ namespace netboilerplate
 			CreateMap<Character, GetCharacterDto>()
                 .ForMember(dest =>
             dest.Backpack, opt => opt.MapFrom(src => new AddBackpackDto { Description = src.Backpack.Description }));
-            CreateMap<AddCharacterDto, Character>().ForMember(dest =>
-			dest.Backpack, opt=>opt.MapFrom(src=> new AddBackpackDto { Description = src.Backpack.Description}));
+            CreateMap<AddCharacterDto, Character>();
 			CreateMap<UpdateCharacterDto, Character>();
 
             CreateMap<AddBackpackDto, Backpack>();
@@ -17,3 +16,7 @@ namespace netboilerplate
     }
 }
 
+
+
+//.ForMember(dest =>
+//            dest.Backpack, opt => opt.MapFrom(src => new AddBackpackDto { Description = src.Backpack.Description }));
